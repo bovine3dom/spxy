@@ -5,7 +5,7 @@ using Markdown
 using InteractiveUtils
 
 # ╔═╡ 99e1d6e6-20dc-11eb-06f2-d362ed6101e6
-using Distributions, Random, Plots, Statistics, Dates, CSV, Query, DataFrames
+using Distributions, Random, Plots, Statistics, Dates, CSV, Query, DataFrames, TimeSeries
 
 # ╔═╡ 96d476bc-20db-11eb-1cef-b97156feefc6
 begin
@@ -89,7 +89,7 @@ begin
 end
 
 # ╔═╡ 70c305bc-2e67-11eb-1215-11810a9d5a21
-plot(minutedata[!,:Time], minutedata[!,:Open])
+#plot(minutedata[!,:Time], minutedata[!,:Open])
 
 # ╔═╡ 8d32f752-2e67-11eb-11a0-a774f00516f3
 begin
@@ -104,79 +104,15 @@ end
 
 
 # ╔═╡ 58ba73a4-2e69-11eb-2743-35183b2539fe
-minutedata[1,1] - Date.Minute()
-
-# ╔═╡ ab23d8b8-2e69-11eb-0b46-d9fdddf14d59
-
-
-# ╔═╡ 56068026-2e69-11eb-2589-032c0c56e763
-
-
-# ╔═╡ 3acc9e1c-2e69-11eb-10ef-7338f03affe0
-
-
-# ╔═╡ 3cd4b408-2e67-11eb-00b2-bfe860f6de1c
-
-
-# ╔═╡ 3944f37a-2e67-11eb-246e-f38aa875b6b8
-
-
-# ╔═╡ b7aa8da2-2e66-11eb-2346-db74bea1ad13
-
-
-# ╔═╡ f17b8e96-2e66-11eb-06d1-a512a8680ca9
-
-
-# ╔═╡ eb25a6ee-2e66-11eb-3412-07d22a5bc241
-
-
-# ╔═╡ b528465a-2e66-11eb-3425-4fb4fe82b560
-
-
-# ╔═╡ a5154650-2e66-11eb-2c80-6ffbdc81d05f
-
-
-# ╔═╡ 9f9eb74c-2e66-11eb-386c-7990e70222a7
-
-
-# ╔═╡ 9b9bdcce-2e66-11eb-3ecf-2bb543d1a0cb
-
-
-# ╔═╡ 9803b780-2e66-11eb-3504-096323383227
-
+begin
+# using TimeSeries
+# z = TimeArray(minutedata, timestamp = :Time)
+# # Pluto can't format these for display - maybe we don't care?
+# # but the e.g. lag function would have been very useful.
+end
 
 # ╔═╡ f1062ecc-2e65-11eb-2a43-ddcac1153d74
-endswith
-
-# ╔═╡ fce1f7c6-2e65-11eb-2463-b3b39e7919a8
-
-
-# ╔═╡ e174a396-2e65-11eb-2b45-d3b30585bf5f
-
-
-# ╔═╡ 450c1618-2e65-11eb-1fcb-2189bbabc713
-
-
-# ╔═╡ 6b6aab00-2e63-11eb-2341-6f248d61632a
-
-
-# ╔═╡ 5812eeaa-2e63-11eb-08f9-bba5ae69bae1
-
-
-# ╔═╡ b75eb558-20e2-11eb-3218-d394f4e812f9
-
-
-# ╔═╡ aa0db7a0-20e2-11eb-080f-3d527cbb6acd
-
-
-# ╔═╡ 924ed4a0-20e2-11eb-2204-0b30734a1c72
-
-
-# ╔═╡ 8363e7c8-20e2-11eb-247b-eb1eaef7fc7c
-
-
-# ╔═╡ 72e73a76-20e2-11eb-0bee-ed7f37d82fbb
-
+minutedata[20,1] - Dates.Minute(5) # but TimeArrays will be indexed by the date, so it must be better to just use that instead. Otherwise we're re-inventing lots of wheels.
 
 # ╔═╡ Cell order:
 # ╠═96d476bc-20db-11eb-1cef-b97156feefc6
@@ -193,27 +129,4 @@ endswith
 # ╠═8d32f752-2e67-11eb-11a0-a774f00516f3
 # ╟─85a029ba-2e67-11eb-2603-39582a8300f2
 # ╠═58ba73a4-2e69-11eb-2743-35183b2539fe
-# ╠═ab23d8b8-2e69-11eb-0b46-d9fdddf14d59
-# ╠═56068026-2e69-11eb-2589-032c0c56e763
-# ╠═3acc9e1c-2e69-11eb-10ef-7338f03affe0
-# ╠═3cd4b408-2e67-11eb-00b2-bfe860f6de1c
-# ╠═3944f37a-2e67-11eb-246e-f38aa875b6b8
-# ╠═b7aa8da2-2e66-11eb-2346-db74bea1ad13
-# ╠═f17b8e96-2e66-11eb-06d1-a512a8680ca9
-# ╠═eb25a6ee-2e66-11eb-3412-07d22a5bc241
-# ╠═b528465a-2e66-11eb-3425-4fb4fe82b560
-# ╠═a5154650-2e66-11eb-2c80-6ffbdc81d05f
-# ╠═9f9eb74c-2e66-11eb-386c-7990e70222a7
-# ╠═9b9bdcce-2e66-11eb-3ecf-2bb543d1a0cb
-# ╠═9803b780-2e66-11eb-3504-096323383227
 # ╠═f1062ecc-2e65-11eb-2a43-ddcac1153d74
-# ╠═fce1f7c6-2e65-11eb-2463-b3b39e7919a8
-# ╠═e174a396-2e65-11eb-2b45-d3b30585bf5f
-# ╠═450c1618-2e65-11eb-1fcb-2189bbabc713
-# ╠═6b6aab00-2e63-11eb-2341-6f248d61632a
-# ╠═5812eeaa-2e63-11eb-08f9-bba5ae69bae1
-# ╠═b75eb558-20e2-11eb-3218-d394f4e812f9
-# ╠═aa0db7a0-20e2-11eb-080f-3d527cbb6acd
-# ╠═924ed4a0-20e2-11eb-2204-0b30734a1c72
-# ╠═8363e7c8-20e2-11eb-247b-eb1eaef7fc7c
-# ╠═72e73a76-20e2-11eb-0bee-ed7f37d82fbb
